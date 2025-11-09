@@ -1,0 +1,18 @@
+This folder is to be completed once all previous tasks are done.
+The checkpoints will act as fail safes for any attendee that is unable to keep up/messed up at some point in the
+workshop. They will provide all the attendee needs in order to proceed with the next phase of the workshop.
+
+
+Following the word document inside res://docs:
+	For each nested folder, ADD:
+		All pertinent completed script and scenes for the corresponding section of the document
+
+	For example:
+		Player section->[0] would contain:
+			Player Scene with: 
+				configured AnimatedSprite2D
+				configured collision shape
+			Player script with:
+				movement handling
+				animation handling
+	

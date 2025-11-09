@@ -1,0 +1,7 @@
+LOW PRIORITY
+
+ADD:
+	A SaveData resource that contains
+		current level number
+		death count
+		coin count

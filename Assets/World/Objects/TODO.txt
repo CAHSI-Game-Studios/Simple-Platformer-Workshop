@@ -1,0 +1,4 @@
+LOW PRIORITY
+
+ADD:
+	Collectible object sprite/sprite sheet, maybe a coin or a gem

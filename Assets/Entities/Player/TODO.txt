@@ -1,0 +1,6 @@
+HIGH PRIORITY
+
+ADD:
+	Player walk/run sprite sheet
+	Player idle sprite sheet
+	Player jump sprite sheet

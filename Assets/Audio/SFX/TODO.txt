@@ -1,0 +1,6 @@
+MID PRIORITY
+
+ADD:
+	Jump sound effect mp3/wav
+	Death/lost sound effect mp3/wav
+	

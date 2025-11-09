@@ -1,0 +1,8 @@
+HIGH PRIORITY
+	
+ADD:
+	TileSet resource with:
+		Configured tile assets
+		Configured collision layer
+		OPTIONAL:
+			Configured terrain set
