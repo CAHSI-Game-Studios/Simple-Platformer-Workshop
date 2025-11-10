@@ -31,8 +31,7 @@ folder_colors={
 "res://Assets/World/Tiles/": "red",
 "res://Checkpoints/": "yellow",
 "res://Resources/Saves/": "green",
-"res://Resources/TileSets/": "red",
-"res://TEMP 321 Errupt Reference folder/": "red"
+"res://Resources/TileSets/": "red"
 }
 
 [input]
