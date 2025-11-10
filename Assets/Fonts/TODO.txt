@@ -1,3 +1,0 @@
-MEDIUM PRIORITY:
-	ADD:
-		Small pixel size font
