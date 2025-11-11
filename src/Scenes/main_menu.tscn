@@ -1,6 +1,19 @@
-[gd_scene format=3 uid="uid://biqy1jpk407am"]
+[gd_scene load_steps=7 format=3 uid="uid://biqy1jpk407am"]
+
+[ext_resource type="Script" uid="uid://cs0xp1aix0lr3" path="res://src/Scenes/main_menu.gd" id="1_5qhmu"]
+[ext_resource type="Texture2D" uid="uid://cotkxfcq847nw" path="res://Assets/Fonts/Buttons/start_game_button.PNG" id="2_ngssb"]
+[ext_resource type="Texture2D" uid="uid://b6f8mcrdqryrx" path="res://Assets/Fonts/Game Title Workshop.png" id="2_u0ftb"]
+[ext_resource type="Texture2D" uid="uid://cxndurt26ay7i" path="res://Assets/Fonts/Buttons/start_game_hover.PNG" id="3_u0ftb"]
+[ext_resource type="Texture2D" uid="uid://ccggavindtedv" path="res://Assets/Fonts/Buttons/quit_button.PNG" id="4_w2kj5"]
+[ext_resource type="Texture2D" uid="uid://cvaw7jyxskjx3" path="res://Assets/Fonts/Buttons/quit_hover.PNG" id="5_2g64k"]
 
 [node name="Main Menu" type="Node2D"]
+script = ExtResource("1_5qhmu")
+
+[node name="Game Title" type="Sprite2D" parent="."]
+position = Vector2(501, 215)
+scale = Vector2(0.5375, 0.475)
+texture = ExtResource("2_u0ftb")
 
 [node name="Button Manager" type="Control" parent="."]
 layout_mode = 3
@@ -8,12 +21,25 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Start Game" type="Button" parent="Button Manager"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Start Game" type="TextureButton" parent="Button Manager"]
+layout_mode = 1
+offset_left = 270.0
+offset_top = 322.0
+offset_right = 1870.0
+offset_bottom = 697.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("2_ngssb")
+texture_hover = ExtResource("3_u0ftb")
 
-[node name="Quit" type="Button" parent="Button Manager"]
+[node name="Quit" type="TextureButton" parent="Button Manager"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 277.0
+offset_top = 438.0
+offset_right = 1877.0
+offset_bottom = 813.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_w2kj5")
+texture_hover = ExtResource("5_2g64k")
+
+[connection signal="pressed" from="Button Manager/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Button Manager/Quit" to="." method="_on_quit_pressed"]
