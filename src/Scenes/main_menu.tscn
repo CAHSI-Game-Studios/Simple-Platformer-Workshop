@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://biqy1jpk407am"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Button Manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start Game" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Quit" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
