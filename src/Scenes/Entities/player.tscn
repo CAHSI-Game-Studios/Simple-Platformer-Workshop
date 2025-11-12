@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://dc1klfhhywj3a"]
+
+[ext_resource type="Texture2D" uid="uid://df5phqssg5iay" path="res://Assets/Entities/Player/idle2.PNG" id="1_rlhq5"]
+[ext_resource type="Texture2D" uid="uid://d0ri7ge871njg" path="res://Assets/Entities/Player/jumping player.PNG" id="2_xgn1b"]
+[ext_resource type="Texture2D" uid="uid://ex20bd5cw782" path="res://Assets/Entities/Player/idle_player.PNG" id="3_s1pbu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s30iq"]
+atlas = ExtResource("1_rlhq5")
+region = Rect2(56, 0, 215, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmsqs"]
+atlas = ExtResource("1_rlhq5")
+region = Rect2(271, 0, 215, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23t3j"]
+atlas = ExtResource("2_xgn1b")
+region = Rect2(0, 256, 232, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dubo7"]
+atlas = ExtResource("2_xgn1b")
+region = Rect2(233, 0, 233, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dty3d"]
+atlas = ExtResource("3_s1pbu")
+region = Rect2(0, 0, 276, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lv0k"]
+atlas = ExtResource("3_s1pbu")
+region = Rect2(278, 0, 234, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g1cb"]
+atlas = ExtResource("3_s1pbu")
+region = Rect2(49, 0, 234, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1k6m0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s30iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmsqs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23t3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dubo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23t3j")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dty3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lv0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g1cb")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1k6m0")
+animation = &"jump"
+frame_progress = 0.79082286
