@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://c74cvqbkd4s8f"]
+[gd_scene load_steps=13 format=4 uid="uid://c74cvqbkd4s8f"]
 
+[ext_resource type="Texture2D" uid="uid://bhgn6fsdgup2s" path="res://Assets/World/ParallaxBg.jpg" id="1_3q0kp"]
 [ext_resource type="Texture2D" uid="uid://dfgjvkb6dmp6n" path="res://Assets/World/Tiles/platforms.png" id="1_r1hsh"]
 [ext_resource type="Texture2D" uid="uid://o58imir4tbqc" path="res://Assets/World/Tiles/world_tileset.png" id="2_e4u55"]
 [ext_resource type="Script" uid="uid://ctcntwn72ekj4" path="res://src/Scripts/Entities/playerPlaceholder.gd" id="3_8bgo7"]
@@ -204,12 +205,12 @@ autoplay = true
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1024, 0)
+motion_mirroring = Vector2(315, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(29.000053, 51.5)
-scale = Vector2(8, 1.6328125)
-texture = ExtResource("3_phtqt")
+position = Vector2(131.99998, 84.99999)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_3q0kp")
 
 [node name="Platform" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_fyndt")
