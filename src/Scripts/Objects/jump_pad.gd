@@ -3,5 +3,6 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-    if body.is_in_group("player"):
-        body.velocity.y = -jump_strenght
+	if body.is_in_group("player"):
+		body.velocity.y = -jump_strenght
+		$AnimatedSprite2D.play("SpringAnim")
