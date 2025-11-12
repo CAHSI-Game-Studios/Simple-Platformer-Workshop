@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dc1klfhhywj3a"]
+[gd_scene load_steps=14 format=3 uid="uid://dc1klfhhywj3a"]
 
 [ext_resource type="Texture2D" uid="uid://df5phqssg5iay" path="res://Assets/Entities/Player/idle2.PNG" id="1_rlhq5"]
-[ext_resource type="Script" uid="uid://b0csbrxe8g206" path="res://src/Scenes/Entities/player.gd" id="1_xgn1b"]
+[ext_resource type="Script" uid="uid://cit4rse20ggpy" path="res://src/Scenes/Entities/player.gd" id="1_xgn1b"]
 [ext_resource type="Texture2D" uid="uid://d0ri7ge871njg" path="res://Assets/Entities/Player/jumping player.PNG" id="2_xgn1b"]
 [ext_resource type="Texture2D" uid="uid://ex20bd5cw782" path="res://Assets/Entities/Player/idle_player.PNG" id="3_s1pbu"]
 
@@ -68,10 +68,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xgn1b"]
+radius = 79.025314
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xgn1b"]
+custom_solver_bias = 0.067
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_xgn1b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(564, 456)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(24, -133)
+scale = Vector2(1, 0.98046875)
 sprite_frames = SubResource("SpriteFrames_1k6m0")
 animation = &"walking"
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(23, -98)
+shape = SubResource("CircleShape2D_xgn1b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12.999999, 371.99997)
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_xgn1b")
+debug_color = Color(0.20420626, 0.62073445, 0.46011347, 0.41960785)
