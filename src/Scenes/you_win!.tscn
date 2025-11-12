@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://t2dnwww81pju"]
+
+[ext_resource type="Script" uid="uid://3w6vpqhki8x0" path="res://you_win!.gd" id="1_w5xmt"]
+
+[node name="You Win!" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -13.0
+offset_right = 35.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w5xmt")
+
+[node name="Congrats" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46500003
+anchor_top = 0.268
+anchor_right = 0.46500003
+anchor_bottom = 0.268
+offset_left = -82.160034
+offset_top = -27.824005
+offset_right = 82.339966
+offset_bottom = 27.175995
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.85882354, 0.78039217, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Congratulations!
+You Win!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.467
+anchor_top = 0.423
+anchor_right = 0.467
+anchor_bottom = 0.423
+offset_left = -117.20801
+offset_top = -45.864014
+offset_right = 116.79199
+offset_bottom = 46.135986
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try Again"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46600002
+anchor_top = 0.55600005
+anchor_right = 0.46600002
+anchor_bottom = 0.55600005
+offset_left = -117.18402
+offset_top = -46.008057
+offset_right = 116.81598
+offset_bottom = 45.991943
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="pressed" from="Button" to="." method="_on_Try_again_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_quit_pressed"]
