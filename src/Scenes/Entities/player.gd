@@ -1,50 +1,111 @@
 extends Node2D
 
-@export var speed = 120
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var speed := 120.0
+@export var jump_force := 350.0
+@export var gravity := 900.0
 
-@onready var sprite: AnimatedSprite2D = $CharacterBody2D/AnimatedSprite2D # rename to your node
-
+@onready var body: CharacterBody2D = $CharacterBody2D
+@onready var sprite: AnimatedSprite2D = $CharacterBody2D/AnimatedSprite2D
 var jumping := false
+var jump_count := 0
+const MAX_JUMPS := 2
+func _ready() -> void:
+	# Force grounded animation on start
+	sprite.animation = "idle"
+	sprite.play()
 
-func _process(delta: float) -> void:
-	var movement := Vector2.ZERO
-	if Input.is_action_pressed("right"): movement.x += 2
-	if Input.is_action_pressed("left"):  movement.x -= 2
-	if Input.is_action_pressed("down"):  movement.y += 1
-	if Input.is_action_pressed("up"):    movement.y -= 1
-	# Start jump animation (once)
-	if Input.is_action_just_pressed("jump") and !jumping:
-		jumping = true
-		sprite.animation = "jump"
-		sprite.play()
-	
-	# If currently playing jump, don’t override with walking/idle
-	if jumping:
+func _physics_process(delta: float) -> void:
+	var dir := 0.0
+	if Input.is_action_pressed("right"): dir += 1.0
+	if Input.is_action_pressed("left"):  dir -= 1.0
+
+	# Horizontal
+	body.velocity.x = dir * speed
+
+	# Gravity
+	body.velocity.y += gravity * delta
+
+	# Jump (double jump)
+	if Input.is_action_just_pressed("jump") and jump_count < MAX_JUMPS:
+		jumping=true
+		body.velocity.y = -jump_force
+		jump_count += 1
+		sprite.animation = "jump"; sprite.play()
+
+	# Move & check floor
+	body.move_and_slide()
+	if body.is_on_floor():
+		jump_count = 0
+		# clamp tiny drift
+		if abs(dir) < 0.001:
+			body.velocity.x = 0.0
+
+	# Flip (assumes art faces RIGHT by default)
+	if dir != 0.0:
+		sprite.flip_h = dir > 0.0
+
+	# Animations
+	if !body.is_on_floor() and jumping:
 		if sprite.animation != "jump":
-			sprite.animation = "jump"
-		# end jump when the animation finishes (non-looping jump)
-		if !sprite.is_playing():
-			jumping = false
-		return  # prevent walking/idle code from running this frame
-	if movement != Vector2.ZERO:
-		movement = movement.normalized()
-		# Flip: assume the sprite faces RIGHT by default
-		sprite.flip_h = movement.x > 0
+			sprite.animation = "jump"; sprite.play()
+	elif dir != 0.0:
 		if sprite.animation != "walking":
-			sprite.animation = "walking"
-		if !sprite.is_playing():
-			sprite.play()
-	
+			sprite.animation = "walking"; sprite.play()
 	else:
-		sprite.flip_h = sprite.flip_h  # unchanged
 		if sprite.animation != "idle":
-			sprite.animation = "idle"
-		if !sprite.is_playing():
-			sprite.play()
-	position += movement * speed * delta
+			sprite.animation = "idle"; sprite.play()
+
+
+
+#extends Node2D
+#
+#@export var speed = 120
+## Called when the node enters the scene tree for the first time.
+#func _ready() -> void:
+	#pass # Replace with function body.
+#
+#@onready var sprite: AnimatedSprite2D = $CharacterBody2D/AnimatedSprite2D # rename to your node
+#
+#var jumping := false
+#@export var jump_force := 350.0
+#
+#
+#func _process(delta: float) -> void:
+	#var movement := Vector2.ZERO
+	#if Input.is_action_pressed("right"): movement.x += 2
+	#if Input.is_action_pressed("left"):  movement.x -= 2
+	#if Input.is_action_pressed("down"):  movement.y += 1
+	#if Input.is_action_pressed("up"):    movement.y -= 1
+	## Start jump animation (once)
+	#if Input.is_action_just_pressed("jump") and !jumping:
+		#jumping = true
+		#sprite.animation = "jump"
+		#sprite.play()
+	#
+	## If currently playing jump, don’t override with walking/idle
+	#if jumping:
+		#if sprite.animation != "jump":
+			#sprite.animation = "jump"
+		## end jump when the animation finishes (non-looping jump)
+		#if !sprite.is_playing():
+			#jumping = false
+		#return  # prevent walking/idle code from running this frame
+	#if movement != Vector2.ZERO:
+		#movement = movement.normalized()
+		## Flip: assume the sprite faces RIGHT by default
+		#sprite.flip_h = movement.x > 0
+		#if sprite.animation != "walking":
+			#sprite.animation = "walking"
+		#if !sprite.is_playing():
+			#sprite.play()
+	#
+	#else:
+		#sprite.flip_h = sprite.flip_h  # unchanged
+		#if sprite.animation != "idle":
+			#sprite.animation = "idle"
+		#if !sprite.is_playing():
+			#sprite.play()
+	#position += movement * speed * delta
 
 
 

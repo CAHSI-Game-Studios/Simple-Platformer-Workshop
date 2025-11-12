@@ -13,13 +13,13 @@ region = Rect2(56, 0, 215, 512)
 atlas = ExtResource("1_rlhq5")
 region = Rect2(271, 0, 215, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_23t3j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgn1b"]
 atlas = ExtResource("2_xgn1b")
-region = Rect2(0, 256, 232, 256)
+region = Rect2(0, 255, 232, 255)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dubo7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1pbu"]
 atlas = ExtResource("2_xgn1b")
-region = Rect2(233, 0, 233, 512)
+region = Rect2(232, 0, 232, 255)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dty3d"]
 atlas = ExtResource("3_s1pbu")
@@ -44,13 +44,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_23t3j")
+"texture": SubResource("AtlasTexture_xgn1b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dubo7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_23t3j")
+"texture": SubResource("AtlasTexture_s1pbu")
 }],
 "loop": false,
 "name": &"jump",
@@ -83,7 +80,9 @@ script = ExtResource("1_xgn1b")
 position = Vector2(24, -133)
 scale = Vector2(1, 0.98046875)
 sprite_frames = SubResource("SpriteFrames_1k6m0")
-animation = &"walking"
+animation = &"jump"
+frame = 1
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
