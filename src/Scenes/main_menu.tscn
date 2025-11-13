@@ -1,20 +1,94 @@
-
-[gd_scene load_steps=8 format=3 uid="uid://biqy1jpk407am"]
+[gd_scene load_steps=20 format=3 uid="uid://biqy1jpk407am"]
 
 [ext_resource type="Script" uid="uid://cs0xp1aix0lr3" path="res://src/Scenes/main_menu.gd" id="1_5qhmu"]
 [ext_resource type="Texture2D" uid="uid://cotkxfcq847nw" path="res://Assets/Fonts/Buttons/start_game_button.PNG" id="2_ngssb"]
 [ext_resource type="Texture2D" uid="uid://b6f8mcrdqryrx" path="res://Assets/Fonts/Game Title Workshop.png" id="2_u0ftb"]
 [ext_resource type="AudioStream" uid="uid://cjrskaousfemr" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="2_w2kj5"]
+[ext_resource type="Texture2D" uid="uid://bhgn6fsdgup2s" path="res://Assets/World/ParallaxBg.jpg" id="2_yh6xc"]
 [ext_resource type="Texture2D" uid="uid://cxndurt26ay7i" path="res://Assets/Fonts/Buttons/start_game_hover.PNG" id="3_u0ftb"]
+[ext_resource type="Texture2D" uid="uid://df5phqssg5iay" path="res://Assets/Entities/Player/idle2.PNG" id="3_vhf7w"]
+[ext_resource type="Texture2D" uid="uid://d0ri7ge871njg" path="res://Assets/Entities/Player/jumping player.PNG" id="4_1jf14"]
 [ext_resource type="Texture2D" uid="uid://ccggavindtedv" path="res://Assets/Fonts/Buttons/quit_button.PNG" id="4_w2kj5"]
 [ext_resource type="Texture2D" uid="uid://cvaw7jyxskjx3" path="res://Assets/Fonts/Buttons/quit_hover.PNG" id="5_2g64k"]
+[ext_resource type="Texture2D" uid="uid://ex20bd5cw782" path="res://Assets/Entities/Player/idle_player.PNG" id="5_j83mt"]
+[ext_resource type="Script" uid="uid://vpx6vgfclybg" path="res://src/Scenes/music.gd" id="8_2g64k"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s30iq"]
+atlas = ExtResource("3_vhf7w")
+region = Rect2(56, 0, 215, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmsqs"]
+atlas = ExtResource("3_vhf7w")
+region = Rect2(271, 0, 215, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgn1b"]
+atlas = ExtResource("4_1jf14")
+region = Rect2(0, 255, 232, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1pbu"]
+atlas = ExtResource("4_1jf14")
+region = Rect2(232, 0, 232, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dty3d"]
+atlas = ExtResource("5_j83mt")
+region = Rect2(0, 0, 276, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lv0k"]
+atlas = ExtResource("5_j83mt")
+region = Rect2(278, 0, 234, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cwbj"]
+animations = [{
+"frames": [{
+"duration": 2.51,
+"texture": SubResource("AtlasTexture_s30iq")
+}, {
+"duration": 2.51,
+"texture": SubResource("AtlasTexture_bmsqs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgn1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1pbu")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dty3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lv0k")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_5qhmu")
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_w2kj5")
-autoplay = true
+
+[node name="background" type="Sprite2D" parent="."]
+modulate = Color(0.2592937, 0.2592937, 0.2592937, 1)
+position = Vector2(513.49994, 384.49997)
+scale = Vector2(0.5791265, 0.78673464)
+texture = ExtResource("2_yh6xc")
+
+[node name="frog" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.4351923, 0.43519226, 0.43519226, 1)
+position = Vector2(69, 546.00006)
+scale = Vector2(-0.45068985, 0.30098042)
+sprite_frames = SubResource("SpriteFrames_6cwbj")
+animation = &"jump"
+
 [node name="Game Title" type="Sprite2D" parent="."]
 position = Vector2(501, 215)
 scale = Vector2(0.5375, 0.475)
@@ -46,5 +120,29 @@ scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("4_w2kj5")
 texture_hover = ExtResource("5_2g64k")
 
+[node name="Music" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_2g64k")
+
+[node name="CheckBox" type="CheckBox" parent="Music"]
+modulate = Color(1.1019748, 1.1374342, 1.1374342, 1)
+self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
+layout_mode = 1
+offset_left = 841.0
+offset_top = 686.0
+offset_right = 1013.0
+offset_bottom = 764.0
+theme_override_font_sizes/font_size = 51
+text = "Music"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_w2kj5")
+autoplay = true
+bus = &"Menu"
+
 [connection signal="pressed" from="Button Manager/Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Button Manager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="Music/CheckBox" to="Music" method="_on_check_box_toggled"]
