@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://c74cvqbkd4s8f"]
+[gd_scene load_steps=12 format=4 uid="uid://c74cvqbkd4s8f"]
 
 [ext_resource type="Texture2D" uid="uid://bhgn6fsdgup2s" path="res://Assets/World/ParallaxBg.jpg" id="1_3q0kp"]
 [ext_resource type="Texture2D" uid="uid://dfgjvkb6dmp6n" path="res://Assets/World/Tiles/platforms.png" id="1_r1hsh"]
 [ext_resource type="Texture2D" uid="uid://o58imir4tbqc" path="res://Assets/World/Tiles/world_tileset.png" id="2_e4u55"]
-[ext_resource type="Script" uid="uid://ctcntwn72ekj4" path="res://src/Scripts/Entities/playerPlaceholder.gd" id="3_8bgo7"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_phtqt"]
+[ext_resource type="PackedScene" uid="uid://dc1klfhhywj3a" path="res://src/Scenes/Entities/player.tscn" id="4_3q0kp"]
 [ext_resource type="Script" uid="uid://0sh2wh78v1w4" path="res://src/Scenes/Levels/goal.gd" id="6_dw2qm"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_8bgo7"]
@@ -192,9 +191,6 @@ texture = ExtResource("2_e4u55")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_kmhfv")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_phtqt"]
-size = Vector2(12, 12)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bgo7"]
 size = Vector2(20, 218)
 
@@ -224,20 +220,8 @@ tile_set = SubResource("TileSet_rlaii")
 
 [node name="Obstacles" type="Node2D" parent="."]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(28, 112)
-script = ExtResource("3_8bgo7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_phtqt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_phtqt")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -21)
-zoom = Vector2(5, 5)
+[node name="Player" parent="." instance=ExtResource("4_3q0kp")]
+position = Vector2(26, 115)
 
 [node name="Goal" type="Area2D" parent="."]
 position = Vector2(526, 115)

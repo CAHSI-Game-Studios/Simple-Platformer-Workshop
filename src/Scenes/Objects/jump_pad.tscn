@@ -121,6 +121,7 @@ size = Vector2(104, 22)
 
 [node name="JumpPad" type="Area2D"]
 script = ExtResource("1_18cs2")
+jump_strenght = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gkvao")
