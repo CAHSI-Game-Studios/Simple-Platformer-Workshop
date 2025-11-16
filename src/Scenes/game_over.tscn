@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://cekjnnkxr4drj"]
+
+[ext_resource type="Script" uid="uid://csox0u2t0004h" path="res://src/Scenes/GameOver.gd" id="1_twcai"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1020.0
+offset_bottom = 766.0
+script = ExtResource("1_twcai")
+
+[node name="Congrats" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46500003
+anchor_top = 0.268
+anchor_right = 0.46500003
+anchor_bottom = 0.268
+offset_left = -92.851074
+offset_top = 26.67479
+offset_right = 140.14893
+offset_bottom = 85.67479
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.85882354, 0.78039217, 0, 1)
+theme_override_font_sizes/font_size = 43
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.467
+anchor_top = 0.423
+anchor_right = 0.467
+anchor_bottom = 0.423
+offset_left = -92.34
+offset_top = 44.981995
+offset_right = 141.66
+offset_bottom = 136.982
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try Again"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46600002
+anchor_top = 0.55600005
+anchor_right = 0.46600002
+anchor_bottom = 0.55600005
+offset_left = -92.32001
+offset_top = 75.10397
+offset_right = 141.68
+offset_bottom = 167.10397
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed_quit"]
