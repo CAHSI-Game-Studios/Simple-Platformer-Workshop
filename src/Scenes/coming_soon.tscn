@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtgpekj32tb4s"]
+
+[ext_resource type="Texture2D" uid="uid://bhgn6fsdgup2s" path="res://Assets/World/ParallaxBg.jpg" id="1_8oe0n"]
+[ext_resource type="FontFile" uid="uid://bklpyqmnrgv0t" path="res://Assets/Fonts/Pixeled.ttf" id="2_wrndd"]
+[ext_resource type="Script" uid="uid://vpx6vgfclybg" path="res://src/Scenes/music.gd" id="3_xp57e"]
+[ext_resource type="AudioStream" uid="uid://cjrskaousfemr" path="res://Assets/Audio/Music/retro-game-arcade-236133.mp3" id="4_qe2ye"]
+
+[node name="ComingSoon" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+modulate = Color(0.2592937, 0.2592937, 0.2592937, 1)
+position = Vector2(513.49994, 384.49997)
+scale = Vector2(0.5791265, 0.78673464)
+texture = ExtResource("1_8oe0n")
+metadata/_edit_lock_ = true
+
+[node name="Congrats" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.46500003
+anchor_top = 0.268
+anchor_right = 0.46500003
+anchor_bottom = 0.268
+offset_left = 231.0
+offset_top = 207.0
+offset_right = 803.0
+offset_bottom = 518.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_wrndd")
+theme_override_font_sizes/font_size = 55
+text = "Next Level 
+Coming Soon !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_xp57e")
+
+[node name="CheckBox" type="CheckBox" parent="Music"]
+modulate = Color(1.1019748, 1.1374342, 1.1374342, 1)
+self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
+layout_mode = 1
+offset_left = 841.0
+offset_top = 686.0
+offset_right = 1013.0
+offset_bottom = 764.0
+theme_override_font_sizes/font_size = 51
+text = "Music"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("4_qe2ye")
+autoplay = true
+bus = &"Menu"
+
+[connection signal="toggled" from="Music/CheckBox" to="Music" method="_on_check_box_toggled"]
