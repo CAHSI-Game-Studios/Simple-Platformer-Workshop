@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://t2dnwww81pju"]
 
-[ext_resource type="Script" uid="uid://3w6vpqhki8x0" path="res://you_win!.gd" id="1_w5xmt"]
+[ext_resource type="Script" uid="uid://3w6vpqhki8x0" path="res://src/Scenes/you_win!.gd" id="1_w5xmt"]
 
 [node name="You Win!" type="Control"]
 layout_mode = 3
@@ -63,5 +63,21 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
 
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46600002
+anchor_top = 0.55600005
+anchor_right = 0.46600002
+anchor_bottom = 0.55600005
+offset_left = -116.18402
+offset_top = 55.991943
+offset_right = 117.81598
+offset_bottom = 147.99194
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Level"
+
 [connection signal="pressed" from="Button" to="." method="_on_Try_again_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
